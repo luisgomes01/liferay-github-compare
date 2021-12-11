@@ -1,4 +1,9 @@
+$font-color: #6b6c7e;
+
 nav {
+  color: $font-color;
+  font-family: "SF Pro Display", sans-serif;
+  font-weight: 400;
   width: 100vw;
   .menu {
     display: flex;
@@ -31,6 +36,9 @@ nav {
 
     .search-bar {
       width: 30rem;
+      .input-group-text {
+        background-color: #f1f2f5;
+      }
     }
 
     .right-menu-icons {
@@ -44,5 +52,8 @@ nav {
         }
       }
     }
+  }
+  svg {
+    color: $font-color;
   }
 }

@@ -4,8 +4,8 @@ import emptystate from "../../img/emptystate.svg";
 export default function EmptyState() {
   return (
     <ClayEmptyState
-      description="You don't have more notifications to review"
-      imgProps={{ alt: "Alternative Text", title: "Hello World!" }}
+      description="Add new repositories by clicking the blue plus icon"
+      imgProps={{ alt: "Alternative Text" }}
       imgSrc={emptystate}
       title="There's nothing here yet!"
       className="empty"
