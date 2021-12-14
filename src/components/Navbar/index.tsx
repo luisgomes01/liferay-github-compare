@@ -3,11 +3,14 @@ import ClayIcon from "@clayui/icon";
 import { ClayInput } from "@clayui/form";
 import ClayDropDown from "@clayui/drop-down";
 import ClayButton from "@clayui/button";
+import ClayCard from "@clayui/card";
 import "@clayui/css/lib/css/atlas.css";
 import github from "../../img/github.svg";
 import "./Navbar.scss";
+
 export default function Navbar() {
-  const [expand, setExpand] = useState(false);
+  const [expandFilterAndOrder, setExpandFilterAndOrder] = useState(false);
+  const [expandAddRepository, setExpandAddRepository] = useState(false);
   return (
     <nav>
       <div className="menu">
@@ -23,8 +26,8 @@ export default function Navbar() {
                 Fliter and Order <ClayIcon symbol="caret-bottom" />
               </button>
             }
-            active={expand}
-            onActiveChange={setExpand}
+            active={expandFilterAndOrder}
+            onActiveChange={setExpandFilterAndOrder}
             menuElementAttrs={{
               className: "filter-dropdown",
               containerProps: {
@@ -86,12 +89,40 @@ export default function Navbar() {
             <ClayIcon symbol="cards2" />
           </button>
 
-          <button
-            className="btn btn-unstyled nav-btn nav-btn-monospaced unstyled-button plus-icon-button"
-            type="button"
+          <ClayDropDown
+            active={expandAddRepository}
+            onActiveChange={setExpandAddRepository}
+            trigger={
+              <button
+                className="btn btn-unstyled nav-btn nav-btn-monospaced unstyled-button plus-icon-button"
+                type="button"
+              >
+                <ClayIcon symbol="plus" />
+              </button>
+            }
           >
-            <ClayIcon symbol="plus" />
-          </button>
+            <ClayCard>
+              <ClayCard.Body>
+                <ClayCard.Description displayType="title">
+                  {"New Repository"}
+                </ClayCard.Description>
+                <label htmlFor="repository">
+                  Repository <span>*</span>
+                </label>
+                <ClayInput.Group>
+                  <ClayInput
+                    className="add-repository-input"
+                    placeholder="user/repository"
+                    type="text"
+                  />
+                </ClayInput.Group>
+              </ClayCard.Body>
+            </ClayCard>
+            <div className="dropdown-action-buttons">
+              <ClayButton displayType="secondary">Cancel</ClayButton>
+              <ClayButton displayType="primary">Add Repository</ClayButton>
+            </div>
+          </ClayDropDown>
         </section>
       </div>
     </nav>
