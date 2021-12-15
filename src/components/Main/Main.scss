@@ -1,7 +1,12 @@
 main {
   background-color: rgb(247, 248, 249);
   height: calc(100% - 4rem);
-
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 100px;
+  align-items: center;
   .emptystate-container {
     display: flex;
     align-items: center;
@@ -10,5 +15,12 @@ main {
     .empty {
       margin: 0 auto !important;
     }
+  }
+
+  .card-container {
+    height: 18rem;
+    width: 18rem;
+    margin-top: 1rem;
+    margin-bottom: 0 !important;
   }
 }

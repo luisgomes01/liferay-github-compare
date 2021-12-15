@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import ClayIcon from "@clayui/icon";
 import { ClayInput } from "@clayui/form";
 import ClayDropDown from "@clayui/drop-down";
@@ -7,10 +7,30 @@ import ClayCard from "@clayui/card";
 import "@clayui/css/lib/css/atlas.css";
 import github from "../../img/github.svg";
 import "./Navbar.scss";
+import { useRepositories } from "../../contexts/repositories";
 
 export default function Navbar() {
   const [expandFilterAndOrder, setExpandFilterAndOrder] = useState(false);
   const [expandAddRepository, setExpandAddRepository] = useState(false);
+  const { addRepository, addAllUserRepositories, urlEnding, setUrlEnding } =
+    useRepositories();
+
+  const onSubmitForm = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (urlEnding.length === 0) {
+      return false;
+    }
+
+    if (urlEnding.split("/").length > 1) {
+      addRepository();
+      return true;
+    }
+
+    addAllUserRepositories();
+    return true;
+  };
+
   return (
     <nav>
       <div className="menu">
@@ -69,21 +89,21 @@ export default function Navbar() {
 
         <section className="right-menu-icons">
           <button
-            className="btn btn-unstyled nav-btn nav-btn-monospaced"
+            className="btn-unstyled nav-btn nav-btn-monospaced"
             type="button"
           >
             <ClayIcon symbol="star-o" />
           </button>
 
           <button
-            className="btn btn-unstyled nav-btn nav-btn-monospaced"
+            className="btn-unstyled nav-btn nav-btn-monospaced"
             type="button"
           >
             <ClayIcon symbol="adjust" />
           </button>
 
           <button
-            className="btn btn-unstyled nav-btn nav-btn-monospaced"
+            className="btn-unstyled nav-btn nav-btn-monospaced"
             type="button"
           >
             <ClayIcon symbol="cards2" />
@@ -101,27 +121,37 @@ export default function Navbar() {
               </button>
             }
           >
-            <ClayCard>
-              <ClayCard.Body>
-                <ClayCard.Description displayType="title">
-                  {"New Repository"}
-                </ClayCard.Description>
-                <label htmlFor="repository">
-                  Repository <span>*</span>
-                </label>
-                <ClayInput.Group>
-                  <ClayInput
-                    className="add-repository-input"
-                    placeholder="user/repository"
-                    type="text"
-                  />
-                </ClayInput.Group>
-              </ClayCard.Body>
-            </ClayCard>
-            <div className="dropdown-action-buttons">
-              <ClayButton displayType="secondary">Cancel</ClayButton>
-              <ClayButton displayType="primary">Add Repository</ClayButton>
-            </div>
+            <form onSubmit={onSubmitForm}>
+              <ClayCard>
+                <ClayCard.Body>
+                  <ClayCard.Description displayType="title">
+                    {"New Repository"}
+                  </ClayCard.Description>
+                  <label htmlFor="repository">
+                    Repository <span>*</span>
+                  </label>
+                  <ClayInput.Group>
+                    <ClayInput
+                      className="add-repository-input"
+                      value={urlEnding}
+                      type="text"
+                      onChange={(e) => setUrlEnding(e.target.value)}
+                    />
+                  </ClayInput.Group>
+                </ClayCard.Body>
+              </ClayCard>
+              <div className="dropdown-action-buttons">
+                <ClayButton
+                  displayType="secondary"
+                  onClick={() => setExpandAddRepository(false)}
+                >
+                  Cancel
+                </ClayButton>
+                <ClayButton displayType="primary" type="submit">
+                  Add Repository
+                </ClayButton>
+              </div>
+            </form>
           </ClayDropDown>
         </section>
       </div>
