@@ -1,9 +1,8 @@
 import EmptyState from "../Emptystate";
 import "./Main.scss";
 import { useRepositories } from "../../contexts/repositories";
-import ClayCard from "@clayui/card";
-import ClayButton from "@clayui/button";
-import liferay from "../../img/liferay.svg";
+
+import RepositoryCard from "../RepositoryCard";
 export default function Main() {
   const { repositories } = useRepositories();
 
@@ -19,53 +18,20 @@ export default function Main() {
 
   return (
     <main>
-      {repositories.map((repository, key) => {
-        return (
-          <ClayCard key={key} className="card-container">
-            <ClayCard.Body>
-              <ClayCard.Description displayType="title" className="card-title">
-                <img src={liferay} alt="liferay-logo.svg" />
-                {repository.full_name}
-              </ClayCard.Description>
-              <ul>
-                <li>
-                  <p>
-                    Stars <span>{repository.stars}</span>
-                  </p>
-                </li>
-
-                <li>
-                  <p>
-                    Forks <span>{repository.forks}</span>
-                  </p>
-                </li>
-
-                <li>
-                  <p>
-                    Open Issues <span>{repository.openIssues}</span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Age <span>{repository.age}</span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    Last commit
-                    <span>{repository.lastCommit}</span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    License <span>{repository.license}</span>
-                  </p>
-                </li>
-              </ul>
-            </ClayCard.Body>
-          </ClayCard>
-        );
-      })}
+      {repositories.map((repository, key) => (
+        <RepositoryCard
+          key={key}
+          id={repository.id}
+          name={repository.full_name}
+          stars={repository.stargazers_count}
+          forks={repository.forks}
+          openIssues={repository.open_issues}
+          createdAt={repository.created_at}
+          pushedAt={repository.pushed_at}
+          license={repository.license?.name || "N/A"}
+          language={repository.language}
+        />
+      ))}
     </main>
   );
 }

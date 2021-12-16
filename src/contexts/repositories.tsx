@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import * as Api from "../api/repository";
 
 const RepositoryContext = createContext({} as RepositoryContext);
@@ -11,17 +11,20 @@ export const RepositoryProvider: React.FC = ({ children }) => {
     const response = await Api.getRepository(urlEnding);
     setRepositories([...repositories, response]);
     setUrlEnding("");
-
     return response.data;
   };
 
   const addAllUserRepositories = async () => {
     const response = await Api.getAllUserRepositories(urlEnding);
-    // setRepositories([...repositories, response]);
+    setRepositories(repositories.concat(response));
     setUrlEnding("");
-
+    console.log(response);
     return response;
   };
+
+  useEffect(() => {
+    console.log(repositories);
+  }, [repositories]);
 
   return (
     <RepositoryContext.Provider

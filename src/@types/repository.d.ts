@@ -12,6 +12,14 @@ interface IRepository {
   data?: object;
 }
 
+interface ILicense {
+  key: string;
+  name: string;
+  spdx_id: string;
+  url: null;
+  node_id: string;
+}
+
 interface IRepositoryList {
   items: IRepository[];
 }
@@ -23,4 +31,17 @@ interface RepositoryContext {
   setUrlEnding: (url: string) => void;
   addRepository: (repository?: Repository) => void;
   addAllUserRepositories: (repository?: Repository) => void;
+}
+
+interface repositoryCard {
+  id: number;
+  key: number;
+  name: string;
+  stars: number;
+  forks: number;
+  openIssues: number;
+  createdAt: string;
+  pushedAt: string;
+  license: string;
+  language: string;
 }

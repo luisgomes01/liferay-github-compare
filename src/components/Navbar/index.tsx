@@ -1,35 +1,15 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import ClayIcon from "@clayui/icon";
 import { ClayInput } from "@clayui/form";
 import ClayDropDown from "@clayui/drop-down";
-import ClayButton from "@clayui/button";
-import ClayCard from "@clayui/card";
 import "@clayui/css/lib/css/atlas.css";
-import github from "../../img/github.svg";
 import "./Navbar.scss";
-import { useRepositories } from "../../contexts/repositories";
+
+import github from "../../img/github.svg";
+import RightIconsNavbar from "../RightIconsNavbar";
 
 export default function Navbar() {
   const [expandFilterAndOrder, setExpandFilterAndOrder] = useState(false);
-  const [expandAddRepository, setExpandAddRepository] = useState(false);
-  const { addRepository, addAllUserRepositories, urlEnding, setUrlEnding } =
-    useRepositories();
-
-  const onSubmitForm = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (urlEnding.length === 0) {
-      return false;
-    }
-
-    if (urlEnding.split("/").length > 1) {
-      addRepository();
-      return true;
-    }
-
-    addAllUserRepositories();
-    return true;
-  };
 
   return (
     <nav>
@@ -86,74 +66,7 @@ export default function Navbar() {
             </ClayInput.GroupItem>
           </ClayInput.Group>
         </section>
-
-        <section className="right-menu-icons">
-          <button
-            className="btn-unstyled nav-btn nav-btn-monospaced"
-            type="button"
-          >
-            <ClayIcon symbol="star-o" />
-          </button>
-
-          <button
-            className="btn-unstyled nav-btn nav-btn-monospaced"
-            type="button"
-          >
-            <ClayIcon symbol="adjust" />
-          </button>
-
-          <button
-            className="btn-unstyled nav-btn nav-btn-monospaced"
-            type="button"
-          >
-            <ClayIcon symbol="cards2" />
-          </button>
-
-          <ClayDropDown
-            active={expandAddRepository}
-            onActiveChange={setExpandAddRepository}
-            trigger={
-              <button
-                className="btn btn-unstyled nav-btn nav-btn-monospaced unstyled-button plus-icon-button"
-                type="button"
-              >
-                <ClayIcon symbol="plus" />
-              </button>
-            }
-          >
-            <form onSubmit={onSubmitForm}>
-              <ClayCard>
-                <ClayCard.Body>
-                  <ClayCard.Description displayType="title">
-                    {"New Repository"}
-                  </ClayCard.Description>
-                  <label htmlFor="repository">
-                    Repository <span>*</span>
-                  </label>
-                  <ClayInput.Group>
-                    <ClayInput
-                      className="add-repository-input"
-                      value={urlEnding}
-                      type="text"
-                      onChange={(e) => setUrlEnding(e.target.value)}
-                    />
-                  </ClayInput.Group>
-                </ClayCard.Body>
-              </ClayCard>
-              <div className="dropdown-action-buttons">
-                <ClayButton
-                  displayType="secondary"
-                  onClick={() => setExpandAddRepository(false)}
-                >
-                  Cancel
-                </ClayButton>
-                <ClayButton displayType="primary" type="submit">
-                  Add Repository
-                </ClayButton>
-              </div>
-            </form>
-          </ClayDropDown>
-        </section>
+        <RightIconsNavbar />
       </div>
     </nav>
   );

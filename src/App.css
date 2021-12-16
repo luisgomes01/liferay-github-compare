@@ -6,10 +6,10 @@
   font-size: 100%;
   vertical-align: baseline;
   font-family: "SF Pro Display", sans-serif;
+  list-style: none;
 }
 
 .app {
-  height: 100vh;
   width: 100%;
 }
 

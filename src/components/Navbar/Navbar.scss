@@ -45,6 +45,7 @@ nav {
       width: 20rem;
       display: flex;
       justify-content: space-evenly;
+
       .plus-icon-button {
         background-color: #0b5fff;
         svg {
@@ -55,6 +56,10 @@ nav {
   }
   svg {
     color: $font-color;
+  }
+  .right-menu-icons *:hover {
+    background: rgba(39, 40, 51, 0.04);
+    border-radius: 4px;
   }
 }
 
