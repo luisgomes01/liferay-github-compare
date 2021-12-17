@@ -4,7 +4,6 @@ export const getRepository = async (
   urlEnding: string
 ): Promise<IRepository> => {
   const response = await Api.get(`repos/${urlEnding}`);
-  console.log(response.data);
   return response.data;
 };
 

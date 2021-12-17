@@ -31,6 +31,7 @@ interface RepositoryContext {
   setUrlEnding: (url: string) => void;
   addRepository: (repository?: Repository) => void;
   addAllUserRepositories: (repository?: Repository) => void;
+  deleteRepository: (id: number) => void;
 }
 
 interface repositoryCard {

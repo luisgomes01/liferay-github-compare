@@ -4,8 +4,8 @@ import ClayDropDown from "@clayui/drop-down";
 import { ClayInput } from "@clayui/form";
 import ClayButton from "@clayui/button";
 import ClayCard from "@clayui/card";
-
 import { useRepositories } from "../../contexts/repositories";
+import "./AddRepositoryDropdown.scss";
 
 export default function AddRepositoryDropdown() {
   const [expandAddRepository, setExpandAddRepository] = useState(false);
