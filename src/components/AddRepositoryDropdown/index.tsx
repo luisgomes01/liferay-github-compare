@@ -11,9 +11,7 @@ export default function AddRepositoryDropdown() {
   const [expandAddRepository, setExpandAddRepository] = useState(false);
   const { addRepository, addAllUserRepositories, urlEnding, setUrlEnding } =
     useRepositories();
-  const inputElement = useRef<HTMLInputElement>(
-    document.createElement("input")
-  );
+  const inputElement = useRef<HTMLInputElement>({} as HTMLInputElement);
 
   useLayoutEffect(() => {
     inputElement.current.focus();
