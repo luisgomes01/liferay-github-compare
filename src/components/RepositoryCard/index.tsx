@@ -1,5 +1,4 @@
 import ClayCard from "@clayui/card";
-import ClayButton from "@clayui/button";
 import liferay from "../../img/liferay.svg";
 import * as timeago from "timeago.js";
 import ClayIcon from "@clayui/icon";

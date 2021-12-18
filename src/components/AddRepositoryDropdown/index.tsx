@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useLayoutEffect, useRef } from "react";
 import ClayIcon from "@clayui/icon";
 import ClayDropDown from "@clayui/drop-down";
 import { ClayInput } from "@clayui/form";
@@ -11,6 +11,13 @@ export default function AddRepositoryDropdown() {
   const [expandAddRepository, setExpandAddRepository] = useState(false);
   const { addRepository, addAllUserRepositories, urlEnding, setUrlEnding } =
     useRepositories();
+  const inputElement = useRef<HTMLInputElement>(
+    document.createElement("input")
+  );
+
+  useLayoutEffect(() => {
+    inputElement.current.focus();
+  }, [expandAddRepository]);
 
   const onSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +47,13 @@ export default function AddRepositoryDropdown() {
           <ClayIcon symbol="plus" />
         </button>
       }
+      menuElementAttrs={{
+        className: "add-repository-dropdown",
+        containerProps: {
+          className: "dropdown-menu-react-portal-div",
+          id: "dropdownMenuReactPortalDiv",
+        },
+      }}
     >
       <form onSubmit={onSubmitForm}>
         <ClayCard>
@@ -56,6 +70,7 @@ export default function AddRepositoryDropdown() {
                 value={urlEnding}
                 type="text"
                 onChange={(e) => setUrlEnding(e.target.value)}
+                ref={inputElement}
               />
             </ClayInput.Group>
           </ClayCard.Body>
@@ -68,7 +83,7 @@ export default function AddRepositoryDropdown() {
             Cancel
           </ClayButton>
           <ClayButton displayType="primary" type="submit">
-            Add Repository
+            Add
           </ClayButton>
         </div>
       </form>
