@@ -1,7 +1,5 @@
-$font-color: #6b6c7e;
-
 nav {
-  color: $font-color;
+  color: #6b6c7e;
   font-family: "SF Pro Display", sans-serif;
   font-weight: 400;
   width: 100vw;
@@ -55,9 +53,9 @@ nav {
     }
   }
   svg {
-    color: $font-color;
+    color: #6b6c7e;
   }
-  .right-menu-icons *:hover {
+  .right-menu-icons :hover {
     background: rgba(39, 40, 51, 0.04);
     border-radius: 4px;
   }

@@ -19,14 +19,14 @@ main {
       }
       .card-icons {
         display: flex;
+        padding-right: 15px;
         svg {
           color: #6b6c7e;
         }
       }
-      .card-icons:last-child {
-        padding-right: 15px;
-      }
-      .card-icons *:hover {
+      // .card-icons:last-child {
+      // }
+      button:hover {
         background: rgba(39, 40, 51, 0.04);
         border-radius: 4px;
       }
