@@ -32,6 +32,8 @@ interface RepositoryContext {
   addRepository: (repository?: Repository) => void;
   addAllUserRepositories: (repository?: Repository) => void;
   deleteRepository: (id: number) => void;
+  searchTerm: string;
+  setSearchTerm: (value: string) => void;
 }
 
 interface repositoryCard {

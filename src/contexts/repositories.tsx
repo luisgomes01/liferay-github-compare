@@ -6,6 +6,7 @@ const RepositoryContext = createContext({} as RepositoryContext);
 export const RepositoryProvider: React.FC = ({ children }) => {
   const [repositories, setRepositories] = useState<IRepository[]>([]);
   const [urlEnding, setUrlEnding] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const addRepository = async () => {
     const response = await Api.getRepository(urlEnding);
@@ -33,6 +34,8 @@ export const RepositoryProvider: React.FC = ({ children }) => {
         addRepository,
         addAllUserRepositories,
         deleteRepository,
+        searchTerm,
+        setSearchTerm,
       }}
     >
       {children}
