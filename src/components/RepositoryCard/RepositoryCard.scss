@@ -4,6 +4,7 @@ main {
     width: 25rem;
     margin-top: 1rem;
     margin-bottom: 0 !important;
+
     .card-title {
       display: flex;
       align-items: center;
@@ -12,11 +13,13 @@ main {
       height: 4rem;
       font-size: 16px;
       width: 100%;
+
       .repository-title {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
+
       .card-icons {
         display: flex;
         padding-right: 15px;
@@ -24,8 +27,7 @@ main {
           color: #6b6c7e;
         }
       }
-      // .card-icons:last-child {
-      // }
+
       button:hover {
         background: rgba(39, 40, 51, 0.04);
         border-radius: 4px;

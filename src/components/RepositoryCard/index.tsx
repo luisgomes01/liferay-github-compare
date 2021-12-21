@@ -1,10 +1,10 @@
 import ClayCard from "@clayui/card";
 import liferay from "../../img/liferay.svg";
-import * as timeago from "timeago.js";
+
 import ClayIcon from "@clayui/icon";
 import "./RepositoryCard.scss";
 import { useRepositories } from "../../contexts/repositories";
-
+import { format } from "timeago.js";
 const RepositoryCard: React.FC<repositoryCard> = ({
   id,
   name,
@@ -17,6 +17,7 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   language,
 }) => {
   const { deleteRepository } = useRepositories();
+
   return (
     <ClayCard className="card-container">
       <div className="card-title">
@@ -58,11 +59,11 @@ const RepositoryCard: React.FC<repositoryCard> = ({
           </li>
           <li>
             <strong>Age</strong>
-            <span> {timeago.format(createdAt)}</span>
+            <span> {format(createdAt)}</span>
           </li>
           <li>
             <strong>Last commit</strong>
-            <span> {timeago.format(pushedAt)}</span>
+            <span> {format(pushedAt)}</span>
           </li>
           <li>
             <strong>License</strong> <span>{license ? license : "N/A"}</span>
