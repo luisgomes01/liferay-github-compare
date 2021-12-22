@@ -1,4 +1,3 @@
-import "@clayui/css/lib/css/atlas.css";
 import "./Navbar.scss";
 
 import github from "../../img/github.svg";

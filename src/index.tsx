@@ -1,14 +1,14 @@
 import ReactDOM from "react-dom";
 import App from "./App";
-import { Provider } from "@clayui/core";
+import { ClayIconSpriteContext } from "@clayui/icon";
 import spritemap from "./img/icons.svg";
 import { RepositoryProvider } from "../src/contexts/repositories";
 
 ReactDOM.render(
   <RepositoryProvider>
-    <Provider spritemap={spritemap}>
+    <ClayIconSpriteContext.Provider value={spritemap}>
       <App />
-    </Provider>
+    </ClayIconSpriteContext.Provider>
   </RepositoryProvider>,
   document.getElementById("root")
 );
