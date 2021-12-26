@@ -1,6 +1,7 @@
 import ClayDropDown from "@clayui/drop-down";
 import ClayIcon from "@clayui/icon";
 import { useState } from "react";
+import "./FilterDropdown.scss";
 
 export default function FilterDropdown() {
   const [expandFilterAndOrder, setExpandFilterAndOrder] = useState(false);
