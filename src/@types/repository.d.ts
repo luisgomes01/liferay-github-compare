@@ -10,6 +10,7 @@ interface IRepository {
   starred?: boolean;
   language: string;
   data?: object;
+  type?: string;
 }
 
 interface ILicense {
