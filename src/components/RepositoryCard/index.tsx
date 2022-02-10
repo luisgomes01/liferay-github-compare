@@ -3,8 +3,8 @@ import liferay from "../../img/liferay.svg";
 
 import ClayIcon from "@clayui/icon";
 import "./RepositoryCard.scss";
-import { useRepositories } from "../../contexts/repositories";
 import { format } from "timeago.js";
+import { DeleteModal } from "../../components/DeleteModal/index";
 const RepositoryCard: React.FC<repositoryCard> = ({
   id,
   name,
@@ -16,8 +16,6 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   license,
   language,
 }) => {
-  const { deleteRepository } = useRepositories();
-
   return (
     <ClayCard className="card-container">
       <div className="card-title">
@@ -32,13 +30,7 @@ const RepositoryCard: React.FC<repositoryCard> = ({
           >
             <ClayIcon symbol="star-o" />
           </button>
-          <button
-            className="btn-unstyled nav-btn nav-btn-monospaced"
-            type="button"
-            onClick={() => deleteRepository(id)}
-          >
-            <ClayIcon symbol="trash" />
-          </button>
+          <DeleteModal id={id} name={name} />
         </div>
       </div>
       <ClayCard.Body>
