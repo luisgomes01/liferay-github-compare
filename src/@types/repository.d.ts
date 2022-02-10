@@ -48,3 +48,12 @@ interface repositoryCard {
   license: string;
   language: string;
 }
+
+interface repositoryId {
+  id: number;
+}
+
+interface repositoryDeleteModal {
+  id: number;
+  name: string;
+}
