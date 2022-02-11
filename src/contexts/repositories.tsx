@@ -31,20 +31,20 @@ export const RepositoryProvider: React.FC = ({ children }) => {
       const type = await checkTypeOfUser(urlEnding);
       if (type === "User") {
         const response = await Api.getAllUserRepositories(urlEnding);
-        setRepositories(repositories.concat(response));
+        setRepositories([...response, ...repositories]);
         localStorage.setItem(
           "repositories",
-          JSON.stringify(repositories.concat(response))
+          JSON.stringify([...response, ...repositories])
         );
         setUrlEnding("");
         setApiFeedback(undefined);
       }
       if (type === "Organization") {
         const response = await Api.getAllOrganizationRepositories(urlEnding);
-        setRepositories(repositories.concat(response));
+        setRepositories([...response, ...repositories]);
         localStorage.setItem(
           "repositories",
-          JSON.stringify(repositories.concat(response))
+          JSON.stringify([...response, ...repositories])
         );
         setUrlEnding("");
         setApiFeedback(undefined);
