@@ -1911,10 +1911,10 @@
     react-dnd-html5-backend "^10.0.2"
     react-transition-group "^4.4.1"
 
-"@clayui/css@^3.41.0":
-  version "3.41.0"
-  resolved "https://registry.yarnpkg.com/@clayui/css/-/css-3.41.0.tgz#8fb3d1568528a11caccaf7fd3a4eff25642a528e"
-  integrity sha512-ajAm3JJ/2LiDgqdS59JSTKI//2WhWIUFKVNAche1v5Eawf5n/G8kNFaj51LXQqIof+u8eZpJ2KHycr96HyaH/A==
+"@clayui/css@^3.46.0":
+  version "3.46.0"
+  resolved "https://registry.yarnpkg.com/@clayui/css/-/css-3.46.0.tgz#91382f8ba03c4ddedc9ca4145b347c82049725a4"
+  integrity sha512-NgnXxl7xdAbuB9S+0eQUCiR1oqZcAR7uVfr0b8tV8GGcHv91NKQSKgp4myvuQvT+PH1wkxNMTmh15kbCqgrkKA==
 
 "@clayui/drop-down@^3.41.0":
   version "3.41.0"
