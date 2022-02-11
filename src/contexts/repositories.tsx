@@ -8,33 +8,51 @@ export const RepositoryProvider: React.FC = ({ children }) => {
   const [repositories, setRepositories] = useState<IRepository[]>([]);
   const [urlEnding, setUrlEnding] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [apiFeedback, setApiFeedback] = useState<any>(undefined);
 
   const addRepository = async () => {
-    const response = await Api.getRepository(urlEnding);
-    setRepositories([response, ...repositories]);
-    localStorage.setItem("repositories", JSON.stringify([response]));
-    setUrlEnding("");
+    try {
+      const response = await Api.getRepository(urlEnding);
+      setRepositories([response, ...repositories]);
+      localStorage.setItem(
+        "repositories",
+        JSON.stringify([response].concat(repositories))
+      );
+      setUrlEnding("");
+      setApiFeedback(undefined);
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      setApiFeedback(errorMessage);
+    }
   };
 
   const addAllUserRepositories = async () => {
-    const type = await checkTypeOfUser(urlEnding);
-    if (type === "User") {
-      const response = await Api.getAllUserRepositories(urlEnding);
-      setRepositories(repositories.concat(response));
-      localStorage.setItem(
-        "repositories",
-        JSON.stringify(repositories.concat(response))
-      );
+    try {
+      const type = await checkTypeOfUser(urlEnding);
+      if (type === "User") {
+        const response = await Api.getAllUserRepositories(urlEnding);
+        setRepositories(repositories.concat(response));
+        localStorage.setItem(
+          "repositories",
+          JSON.stringify(repositories.concat(response))
+        );
+        setUrlEnding("");
+        setApiFeedback(undefined);
+      }
+      if (type === "Organization") {
+        const response = await Api.getAllOrganizationRepositories(urlEnding);
+        setRepositories(repositories.concat(response));
+        localStorage.setItem(
+          "repositories",
+          JSON.stringify(repositories.concat(response))
+        );
+        setUrlEnding("");
+        setApiFeedback(undefined);
+      }
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      setApiFeedback(errorMessage);
     }
-    if (type === "Organization") {
-      const response = await Api.getAllOrganizationRepositories(urlEnding);
-      setRepositories(repositories.concat(response));
-      localStorage.setItem(
-        "repositories",
-        JSON.stringify(repositories.concat(response))
-      );
-    }
-    setUrlEnding("");
   };
 
   const deleteRepository = (id: number) => {
@@ -66,6 +84,8 @@ export const RepositoryProvider: React.FC = ({ children }) => {
         deleteRepository,
         searchTerm,
         setSearchTerm,
+        apiFeedback,
+        setApiFeedback,
       }}
     >
       {children}

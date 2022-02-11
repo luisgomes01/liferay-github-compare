@@ -1,5 +1,6 @@
 import { FormEvent, useState, useLayoutEffect, useRef } from "react";
 import ClayIcon from "@clayui/icon";
+import ClayAlert from "@clayui/alert";
 import ClayDropDown from "@clayui/drop-down";
 import { ClayInput } from "@clayui/form";
 import ClayButton from "@clayui/button";
@@ -9,8 +10,13 @@ import "./AddRepositoryDropdown.scss";
 
 export default function AddRepositoryDropdown() {
   const [expandAddRepository, setExpandAddRepository] = useState(false);
-  const { addRepository, addAllUserRepositories, urlEnding, setUrlEnding } =
-    useRepositories();
+  const {
+    addRepository,
+    addAllUserRepositories,
+    urlEnding,
+    setUrlEnding,
+    apiFeedback,
+  } = useRepositories();
   const inputElement = useRef<HTMLInputElement>({} as HTMLInputElement);
 
   useLayoutEffect(() => {
@@ -19,10 +25,6 @@ export default function AddRepositoryDropdown() {
 
   const onSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (urlEnding.length === 0) {
-      return false;
-    }
 
     if (urlEnding.split("/").length > 1) {
       addRepository();
@@ -57,20 +59,31 @@ export default function AddRepositoryDropdown() {
         <ClayCard>
           <ClayCard.Body>
             <ClayCard.Description displayType="title">
-              {"New Repository"}
+              New Repository
             </ClayCard.Description>
             <label htmlFor="repository">
               Repository <span>*</span>
             </label>
             <ClayInput.Group>
               <ClayInput
-                className="add-repository-input"
+                className={
+                  apiFeedback !== undefined ? "add-repository-input" : ""
+                }
                 value={urlEnding}
                 type="text"
                 onChange={(e) => setUrlEnding(e.target.value)}
                 ref={inputElement}
               />
             </ClayInput.Group>
+            {apiFeedback !== undefined && (
+              <div className="c-mt-3">
+                <ClayAlert
+                  displayType="danger"
+                  title={apiFeedback.toString()}
+                  variant="feedback"
+                />
+              </div>
+            )}
           </ClayCard.Body>
         </ClayCard>
         <div className="dropdown-action-buttons">
@@ -80,9 +93,15 @@ export default function AddRepositoryDropdown() {
           >
             Cancel
           </ClayButton>
-          <ClayButton displayType="primary" type="submit">
-            Add
-          </ClayButton>
+          {urlEnding === "" ? (
+            <ClayButton displayType="primary" disabled>
+              Add
+            </ClayButton>
+          ) : (
+            <ClayButton displayType="primary" type="submit">
+              Add
+            </ClayButton>
+          )}
         </div>
       </form>
     </ClayDropDown>
