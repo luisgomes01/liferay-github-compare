@@ -17,34 +17,38 @@ export default function Main() {
   }
 
   return (
-    <main>
-      {repositories
-        .filter((repository) => {
-          if (searchTerm === "") {
-            return repository;
-          } else if (
-            repository.full_name
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase())
-          ) {
-            return repository;
-          }
-          return 0;
-        })
-        .map((repository, key) => (
-          <RepositoryCard
-            key={key}
-            id={repository.id}
-            name={repository.full_name}
-            stars={repository.stargazers_count}
-            forks={repository.forks}
-            openIssues={repository.open_issues}
-            createdAt={repository.created_at}
-            pushedAt={repository.pushed_at}
-            license={repository.license?.name || "N/A"}
-            language={repository.language}
-          />
-        ))}
+    <main className="container-fluid">
+      <div className="row">
+        {repositories
+          .filter((repository) => {
+            if (searchTerm === "") {
+              return repository;
+            } else if (
+              repository.full_name
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase())
+            ) {
+              return repository;
+            }
+            return 0;
+          })
+          .map((repository, key) => (
+            <div className="col-md-3  d-flex justify-content-center" key={key}>
+              <RepositoryCard
+                key={key}
+                id={repository.id}
+                name={repository.full_name}
+                stars={repository.stargazers_count}
+                forks={repository.forks}
+                openIssues={repository.open_issues}
+                createdAt={repository.created_at}
+                pushedAt={repository.pushed_at}
+                license={repository.license?.name || "N/A"}
+                language={repository.language}
+              />
+            </div>
+          ))}
+      </div>
     </main>
   );
 }

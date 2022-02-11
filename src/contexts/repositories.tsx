@@ -11,7 +11,7 @@ export const RepositoryProvider: React.FC = ({ children }) => {
 
   const addRepository = async () => {
     const response = await Api.getRepository(urlEnding);
-    setRepositories([...repositories, response]);
+    setRepositories([response, ...repositories]);
     localStorage.setItem("repositories", JSON.stringify([response]));
     setUrlEnding("");
   };
