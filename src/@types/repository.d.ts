@@ -35,6 +35,8 @@ interface RepositoryContext {
   deleteRepository: (id: number) => void;
   searchTerm: string;
   setSearchTerm: (value: string) => void;
+  apiFeedback: Error;
+  setApiFeedback: (value: Error) => void;
 }
 
 interface repositoryCard {
