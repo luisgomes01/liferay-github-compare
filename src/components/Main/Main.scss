@@ -1,13 +1,6 @@
 main {
   background-color: rgb(247, 248, 249);
   height: calc(100vh - 4rem);
-  overflow-y: scroll;
-  display: flex !important;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 30px;
-  padding: 0 100px;
 
   .emptystate-container {
     display: flex;
