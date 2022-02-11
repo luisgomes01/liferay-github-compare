@@ -1,12 +1,14 @@
 main {
   background-color: rgb(247, 248, 249);
   height: calc(100vh - 4rem);
+  overflow-y: scroll;
 
   .emptystate-container {
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
+
     .empty {
       margin: 0 auto !important;
     }
