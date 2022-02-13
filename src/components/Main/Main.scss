@@ -12,3 +12,15 @@ main {
     }
   }
 }
+
+@media (max-width: 1280px) {
+  .card-row {
+    width: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-row {
+    width: 100%;
+  }
+}

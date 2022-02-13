@@ -33,7 +33,10 @@ export default function Main() {
             return 0;
           })
           .map((repository, key) => (
-            <div className="col-md-3  d-flex justify-content-center" key={key}>
+            <div
+              className="col-xl-3  d-flex justify-content-center card-row"
+              key={key}
+            >
               <RepositoryCard
                 key={key}
                 id={repository.id}
