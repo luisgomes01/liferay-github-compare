@@ -7,7 +7,7 @@ export default function FilterDropdown() {
   const [expandFilterAndOrder, setExpandFilterAndOrder] = useState(false);
 
   return (
-    <section className="filter-dropdown">
+    <section className="filter-dropdown mr-2">
       <ClayDropDown
         trigger={
           <button className="unstyled-button">
