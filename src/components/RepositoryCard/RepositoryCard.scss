@@ -1,9 +1,8 @@
 main {
   .card-container {
-    height: 19rem;
+    height: 18rem;
     width: 25rem;
     margin-top: 1rem;
-    margin-bottom: 0 !important;
 
     .card-title {
       display: flex;
@@ -34,7 +33,7 @@ main {
       }
     }
     .card-body {
-      line-height: 2rem;
+      line-height: 1.84rem;
     }
   }
 }
