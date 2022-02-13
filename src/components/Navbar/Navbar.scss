@@ -2,7 +2,7 @@ nav {
   color: #6b6c7e;
   font-family: "SF Pro Display", sans-serif;
   font-weight: 400;
-  width: 100vw;
+
   .menu {
     display: flex;
     justify-content: space-evenly;
@@ -10,9 +10,11 @@ nav {
     height: 4rem;
     width: 100%;
     padding: 0 3rem;
+
     .app-name {
       font-size: 1rem;
       padding: 0 2rem;
+
       img {
         margin-right: 2.2rem;
         width: 1.7rem;
