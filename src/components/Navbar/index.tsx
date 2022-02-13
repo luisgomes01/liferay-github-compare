@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <nav>
       <div className="menu">
-        <section className="app-name">
+        <section className="app-name flex-shrink-0">
           <img src={github} alt="github-logo.svg" />
           Github Compare
         </section>
