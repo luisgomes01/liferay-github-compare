@@ -54,6 +54,7 @@ export default function AddRepositoryDropdown() {
           id: "dropdownMenuReactPortalDiv",
         },
       }}
+      menuWidth={"sm"}
     >
       <form onSubmit={onSubmitForm}>
         <ClayCard>
