@@ -35,19 +35,6 @@ main {
     }
     .card-body {
       line-height: 2rem;
-
-      .language {
-        li {
-          span {
-            padding: 2px;
-            border: 1px solid #ff8f39;
-            font-size: 14px;
-            font-weight: 500;
-            color: #b95000;
-            line-height: 150%;
-          }
-        }
-      }
     }
   }
 }

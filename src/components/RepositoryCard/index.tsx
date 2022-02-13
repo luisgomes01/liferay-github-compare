@@ -1,10 +1,10 @@
 import ClayCard from "@clayui/card";
-import liferay from "../../img/liferay.svg";
-
 import ClayIcon from "@clayui/icon";
+import ClayLabel from "@clayui/label";
 import "./RepositoryCard.scss";
 import { format } from "timeago.js";
 import { DeleteModal } from "../../components/DeleteModal/index";
+import liferay from "../../img/liferay.svg";
 const RepositoryCard: React.FC<repositoryCard> = ({
   id,
   name,
@@ -35,36 +35,39 @@ const RepositoryCard: React.FC<repositoryCard> = ({
       </div>
       <ClayCard.Body>
         <ul>
-          <li>
-            <strong>Stars</strong>
-            <span> {stars}</span>
-          </li>
-
-          <li>
-            <strong>Forks</strong>
-            <span> {forks}</span>
-          </li>
-
-          <li>
-            <strong>Open Issues</strong>
-            <span> {openIssues}</span>
-          </li>
-          <li>
-            <strong>Age</strong>
-            <span> {format(createdAt)}</span>
-          </li>
-          <li>
-            <strong>Last commit</strong>
-            <span> {format(pushedAt)}</span>
-          </li>
-          <li>
-            <strong>License</strong> <span>{license ? license : "N/A"}</span>
-          </li>
-          <div className="language">
+          <ClayCard.Description truncate displayType="text">
             <li>
-              <span>{language ? language.toUpperCase() : "No language"}</span>
+              <strong>Stars</strong>
+              <span> {stars}</span>
             </li>
-          </div>
+
+            <li>
+              <strong>Forks</strong>
+              <span> {forks}</span>
+            </li>
+
+            <li>
+              <strong>Open Issues</strong>
+              <span> {openIssues}</span>
+            </li>
+            <li>
+              <strong>Age</strong>
+              <span> {format(createdAt)}</span>
+            </li>
+            <li>
+              <strong>Last commit</strong>
+              <span> {format(pushedAt)}</span>
+            </li>
+            <li>
+              <strong>License</strong> <span>{license ? license : "N/A"}</span>
+            </li>
+
+            <li>
+              <ClayLabel displayType="warning" large>
+                {language ? language.toUpperCase() : "No language"}
+              </ClayLabel>
+            </li>
+          </ClayCard.Description>
         </ul>
       </ClayCard.Body>
     </ClayCard>
