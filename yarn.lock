@@ -1964,6 +1964,15 @@
     "@clayui/link" "^3.40.0"
     classnames "^2.2.6"
 
+"@clayui/label@^3.45.0":
+  version "3.45.0"
+  resolved "https://registry.yarnpkg.com/@clayui/label/-/label-3.45.0.tgz#42672b36f19dd3a3cf6411be636a46c3b0b18928"
+  integrity sha512-AYo5RvFgN/STBLliaQaCAjHQb+DuxH6D3G9EaSf0kRi8ps9P7u8wkYCo7v68ZGl7UYQgeML9b8qHyBL8/xLvIQ==
+  dependencies:
+    "@clayui/icon" "^3.40.0"
+    "@clayui/link" "^3.45.0"
+    classnames "^2.2.6"
+
 "@clayui/layout@^3.40.0":
   version "3.40.0"
   resolved "https://registry.yarnpkg.com/@clayui/layout/-/layout-3.40.0.tgz#321477facebd903692d936ba5a8666af7f0e3a7a"
@@ -1976,6 +1985,13 @@
   version "3.40.0"
   resolved "https://registry.yarnpkg.com/@clayui/link/-/link-3.40.0.tgz#fabfaabbc7f72eb096298cd896cf84c525363e7b"
   integrity sha512-UwC1EAkvZce+VBPjuC3+mOfREulho/wfs67Y1n2VmsRe+PqxpuxDKxNh/kgQ5cDCHJoIzxDnuhIYLtAkwCU9lg==
+  dependencies:
+    classnames "^2.2.6"
+
+"@clayui/link@^3.45.0":
+  version "3.45.0"
+  resolved "https://registry.yarnpkg.com/@clayui/link/-/link-3.45.0.tgz#d3456c29e6e42c5cfa50a55b01042f6c69475668"
+  integrity sha512-awKFYpdyELRs1Z87Z38v1VliZPp7/NsOfNiTVZ08xMxd4D7Cx70Z6ImLe88TcZ67pYUa6BE4RqVI45WUHFaBcg==
   dependencies:
     classnames "^2.2.6"
 
