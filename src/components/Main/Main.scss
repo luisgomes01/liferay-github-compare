@@ -1,6 +1,6 @@
 main {
   background-color: rgb(247, 248, 249);
-
+  min-height: calc(100vh - 4rem);
   .emptystate-container {
     display: flex;
     align-items: center;
