@@ -48,6 +48,7 @@ export default function Main() {
                 pushedAt={repository.pushed_at}
                 license={repository.license?.name || "N/A"}
                 language={repository.language}
+                avatar={repository.owner.avatar_url}
               />
             </div>
           ))}

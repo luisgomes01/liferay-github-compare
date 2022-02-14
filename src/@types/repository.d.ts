@@ -50,6 +50,7 @@ interface repositoryCard {
   pushedAt: string;
   license: string;
   language: string;
+  avatar: string;
 }
 
 interface repositoryId {

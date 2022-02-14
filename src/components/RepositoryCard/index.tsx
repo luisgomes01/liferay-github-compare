@@ -4,7 +4,6 @@ import ClayLabel from "@clayui/label";
 import "./RepositoryCard.scss";
 import { format } from "timeago.js";
 import { DeleteModal } from "../../components/DeleteModal/index";
-import liferay from "../../img/liferay.svg";
 const RepositoryCard: React.FC<repositoryCard> = ({
   id,
   name,
@@ -15,12 +14,19 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   pushedAt,
   license,
   language,
+  avatar,
 }) => {
   return (
     <ClayCard className="card-container">
       <div className="card-title">
         <div className="repository-title">
-          <img src={liferay} alt="liferay-logo.svg" width={45} height={45} />
+          <img
+            className="mx-2"
+            src={avatar}
+            alt="avatar"
+            width={45}
+            height={45}
+          />
           {name}
         </div>
         <div className="card-icons">
