@@ -48,7 +48,7 @@ const RepositoryCard: React.FC<repositoryCard> = ({
       </div>
       <ClayCard.Body>
         <ul>
-          <ClayCard.Description truncate displayType="text">
+          <ClayCard.Description truncate displayType="text" title="">
             <li>
               <strong>Stars</strong>
               <span> {stars}</span>
