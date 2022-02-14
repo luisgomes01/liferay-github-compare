@@ -1,4 +1,4 @@
-import { FormEvent, useState, useLayoutEffect, useRef } from "react";
+import { FormEvent, useState } from "react";
 import ClayIcon from "@clayui/icon";
 import ClayAlert from "@clayui/alert";
 import ClayDropDown from "@clayui/drop-down";
@@ -17,11 +17,6 @@ export default function AddRepositoryDropdown() {
     setUrlEnding,
     apiFeedback,
   } = useRepositories();
-  const inputElement = useRef<HTMLInputElement>({} as HTMLInputElement);
-
-  useLayoutEffect(() => {
-    inputElement.current.focus();
-  }, [expandAddRepository]);
 
   const onSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -73,7 +68,6 @@ export default function AddRepositoryDropdown() {
                 value={urlEnding}
                 type="text"
                 onChange={(e) => setUrlEnding(e.target.value)}
-                ref={inputElement}
               />
             </ClayInput.Group>
             {apiFeedback !== undefined && (
