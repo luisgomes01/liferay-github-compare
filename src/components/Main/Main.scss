@@ -5,11 +5,7 @@ main {
     display: flex;
     align-items: center;
     width: 100%;
-    height: calc(100vh - 4rem);
-
-    .empty {
-      margin: 0 auto !important;
-    }
+    min-height: calc(100vh - 4rem);
   }
 }
 
