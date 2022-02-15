@@ -1,10 +1,20 @@
 import ClayDropDown from "@clayui/drop-down";
 import ClayIcon from "@clayui/icon";
 import { useState } from "react";
+
+import { useSorts } from "../../contexts/sorts";
 import "./FilterDropdown.scss";
 
 export default function FilterDropdown() {
   const [expandFilterAndOrder, setExpandFilterAndOrder] = useState(false);
+
+  const {
+    sortByRepositoryStars,
+    sortByRepositoryForks,
+    sortByRepositoryOpenIssues,
+    sortByRepositoryAge,
+    sortByRepositoryLastCommit,
+  } = useSorts();
 
   return (
     <section className="filter-dropdown mr-2">
@@ -26,17 +36,46 @@ export default function FilterDropdown() {
       >
         <ClayDropDown.ItemList>
           <ClayDropDown.Group header="ORDER BY">
-            {[
-              { href: "#one", label: "Stars" },
-              { href: "#two", label: "Forks" },
-              { href: "#three", label: "Open Issues" },
-              { href: "#three", label: "Age" },
-              { href: "#three", label: "Last Commit" },
-            ].map((item, i) => (
-              <ClayDropDown.Item href={item.href} key={i}>
-                {item.label}
-              </ClayDropDown.Item>
-            ))}
+            <ClayDropDown.Item
+              onClick={() => {
+                sortByRepositoryStars();
+                setExpandFilterAndOrder(false);
+              }}
+            >
+              Stars
+            </ClayDropDown.Item>
+            <ClayDropDown.Item
+              onClick={() => {
+                sortByRepositoryForks();
+                setExpandFilterAndOrder(false);
+              }}
+            >
+              Forks
+            </ClayDropDown.Item>
+            <ClayDropDown.Item
+              onClick={() => {
+                sortByRepositoryOpenIssues();
+                setExpandFilterAndOrder(false);
+              }}
+            >
+              Open Issues
+            </ClayDropDown.Item>
+            <ClayDropDown.Item
+              onClick={() => {
+                sortByRepositoryAge();
+                setExpandFilterAndOrder(false);
+              }}
+            >
+              Age
+            </ClayDropDown.Item>
+            <ClayDropDown.Item
+              onClick={() => {
+                sortByRepositoryLastCommit();
+                setExpandFilterAndOrder(false);
+              }}
+            >
+              Last Commit
+            </ClayDropDown.Item>
           </ClayDropDown.Group>
         </ClayDropDown.ItemList>
       </ClayDropDown>

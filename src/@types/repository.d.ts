@@ -39,6 +39,14 @@ interface RepositoryContext {
   setApiFeedback: (value: Error) => void;
 }
 
+interface SortContext {
+  sortByRepositoryStars: () => void;
+  sortByRepositoryForks: () => void;
+  sortByRepositoryOpenIssues: () => void;
+  sortByRepositoryAge: () => void;
+  sortByRepositoryLastCommit: () => void;
+}
+
 interface repositoryCard {
   id: number;
   key: number;
