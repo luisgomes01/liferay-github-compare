@@ -55,6 +55,17 @@ export const SortProvider: React.FC = ({ children }) => {
     );
   }, [repositories, setRepositories]);
 
+  const sortByFavoriteRepository = useCallback(() => {
+    const newRepositories = [...repositories];
+    setRepositories(
+      newRepositories.sort((a, b) => {
+        if (a.favorite === b.favorite) return 0;
+        if (a.favorite) return -1;
+        return 1;
+      })
+    );
+  }, [repositories, setRepositories]);
+
   return (
     <SortContext.Provider
       value={{
@@ -63,6 +74,7 @@ export const SortProvider: React.FC = ({ children }) => {
         sortByRepositoryOpenIssues,
         sortByRepositoryAge,
         sortByRepositoryLastCommit,
+        sortByFavoriteRepository,
       }}
     >
       {children}

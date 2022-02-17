@@ -5,6 +5,7 @@ import { ClayTooltipProvider } from "@clayui/tooltip";
 import "./RepositoryCard.scss";
 import { format } from "timeago.js";
 import { DeleteModal } from "../../components/DeleteModal/index";
+import { useRepositories } from "../../contexts/repositories";
 const RepositoryCard: React.FC<repositoryCard> = ({
   id,
   name,
@@ -16,7 +17,10 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   license,
   language,
   avatar,
+  favorite,
 }) => {
+  const { favoriteRepositories } = useRepositories();
+
   return (
     <ClayCard className="card-container">
       <div className="card-title">
@@ -40,8 +44,13 @@ const RepositoryCard: React.FC<repositoryCard> = ({
           <button
             className="btn-unstyled nav-btn nav-btn-monospaced"
             type="button"
+            onClick={() => favoriteRepositories(id)}
           >
-            <ClayIcon symbol="star-o" />
+            {favorite ? (
+              <ClayIcon symbol="star" />
+            ) : (
+              <ClayIcon symbol="star-o" />
+            )}
           </button>
           <DeleteModal id={id} name={name} />
         </div>

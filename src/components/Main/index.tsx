@@ -50,6 +50,7 @@ export default function Main() {
                 license={repository.license?.name || "N/A"}
                 language={repository.language}
                 avatar={repository.owner.avatar_url}
+                favorite={repository.favorite}
               />
             </div>
           ))}

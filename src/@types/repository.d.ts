@@ -11,6 +11,7 @@ interface IRepository {
   language: string;
   data?: object;
   type?: string;
+  favorite: boolean;
 }
 
 interface ILicense {
@@ -37,6 +38,9 @@ interface RepositoryContext {
   setSearchTerm: (value: string) => void;
   apiFeedback: Error;
   setApiFeedback: (value: Error) => void;
+  isFavorite: boolean;
+  setIsFavorite: (value: boolean) => void;
+  favoriteRepositories: (value: id) => void;
 }
 
 interface SortContext {
@@ -45,6 +49,7 @@ interface SortContext {
   sortByRepositoryOpenIssues: () => void;
   sortByRepositoryAge: () => void;
   sortByRepositoryLastCommit: () => void;
+  sortByFavoriteRepository: () => void;
 }
 
 interface repositoryCard {
@@ -59,6 +64,7 @@ interface repositoryCard {
   license: string;
   language: string;
   avatar: string;
+  favorite?: boolean;
 }
 
 interface repositoryId {
