@@ -4,7 +4,7 @@ import { useSorts } from "../../contexts/sorts";
 import AddRepositoryDropdown from "../AddRepositoryDropdown";
 
 export default function RightIconsNavbar() {
-  const { isFavorite, setIsFavorite } = useRepositories();
+  const { getRepositories, isFavorite, setIsFavorite } = useRepositories();
   const { sortByFavoriteRepository } = useSorts();
 
   return (
@@ -15,6 +15,10 @@ export default function RightIconsNavbar() {
           setIsFavorite(!isFavorite);
           if (!isFavorite) {
             sortByFavoriteRepository();
+          }
+
+          if (isFavorite) {
+            getRepositories();
           }
         }}
         type="button"

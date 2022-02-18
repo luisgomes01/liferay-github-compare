@@ -19,7 +19,11 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   avatar,
   favorite,
 }) => {
-  const { favoriteRepositories } = useRepositories();
+  const { repositories, favoriteRepositories } = useRepositories();
+
+  const addFavoriteOnRepositories = () => {
+    localStorage.setItem("repositories", JSON.stringify(repositories));
+  };
 
   return (
     <ClayCard className="card-container">
@@ -44,7 +48,10 @@ const RepositoryCard: React.FC<repositoryCard> = ({
           <button
             className="btn-unstyled nav-btn nav-btn-monospaced"
             type="button"
-            onClick={() => favoriteRepositories(id)}
+            onClick={() => {
+              favoriteRepositories(id);
+              addFavoriteOnRepositories();
+            }}
           >
             {favorite ? (
               <ClayIcon symbol="star" />

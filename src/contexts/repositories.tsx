@@ -101,6 +101,7 @@ export const RepositoryProvider: React.FC = ({ children }) => {
         isFavorite,
         setIsFavorite,
         favoriteRepositories,
+        getRepositories,
       }}
     >
       {children}

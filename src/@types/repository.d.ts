@@ -41,6 +41,7 @@ interface RepositoryContext {
   isFavorite: boolean;
   setIsFavorite: (value: boolean) => void;
   favoriteRepositories: (value: id) => void;
+  getRepositories: () => void;
 }
 
 interface SortContext {
