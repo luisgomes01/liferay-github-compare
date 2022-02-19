@@ -9,6 +9,7 @@ export const RepositoryProvider: React.FC = ({ children }) => {
   const [urlEnding, setUrlEnding] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [apiFeedback, setApiFeedback] = useState<any>(undefined);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const addRepository = async () => {
     try {
@@ -72,6 +73,17 @@ export const RepositoryProvider: React.FC = ({ children }) => {
     getRepositories();
   }, []);
 
+  const favoriteRepositories = (id: number) => {
+    setRepositories(
+      repositories.map((repository) => {
+        if (repository.id === id) {
+          repository.favorite = !repository.favorite;
+        }
+        return repository;
+      })
+    );
+  };
+
   return (
     <RepositoryContext.Provider
       value={{
@@ -86,6 +98,10 @@ export const RepositoryProvider: React.FC = ({ children }) => {
         setSearchTerm,
         apiFeedback,
         setApiFeedback,
+        isFavorite,
+        setIsFavorite,
+        favoriteRepositories,
+        getRepositories,
       }}
     >
       {children}

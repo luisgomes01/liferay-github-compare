@@ -1,10 +1,11 @@
 import ClayCard from "@clayui/card";
 import ClayIcon from "@clayui/icon";
 import ClayLabel from "@clayui/label";
+import { ClayTooltipProvider } from "@clayui/tooltip";
 import "./RepositoryCard.scss";
 import { format } from "timeago.js";
 import { DeleteModal } from "../../components/DeleteModal/index";
-import liferay from "../../img/liferay.svg";
+import { useRepositories } from "../../contexts/repositories";
 const RepositoryCard: React.FC<repositoryCard> = ({
   id,
   name,
@@ -15,27 +16,55 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   pushedAt,
   license,
   language,
+  avatar,
+  favorite,
 }) => {
+  const { repositories, favoriteRepositories } = useRepositories();
+
+  const addFavoriteOnRepositories = () => {
+    localStorage.setItem("repositories", JSON.stringify(repositories));
+  };
+
   return (
     <ClayCard className="card-container">
       <div className="card-title">
-        <div className="repository-title">
-          <img src={liferay} alt="liferay-logo.svg" width={45} height={45} />
-          {name}
-        </div>
+        <ClayTooltipProvider>
+          <div
+            className="repository-title"
+            data-tooltip-align="top"
+            title={name}
+          >
+            <img
+              className="mx-2"
+              src={avatar}
+              alt="avatar"
+              width={45}
+              height={45}
+            />
+            {name}
+          </div>
+        </ClayTooltipProvider>
         <div className="card-icons">
           <button
             className="btn-unstyled nav-btn nav-btn-monospaced"
             type="button"
+            onClick={() => {
+              favoriteRepositories(id);
+              addFavoriteOnRepositories();
+            }}
           >
-            <ClayIcon symbol="star-o" />
+            {favorite ? (
+              <ClayIcon symbol="star" />
+            ) : (
+              <ClayIcon symbol="star-o" />
+            )}
           </button>
           <DeleteModal id={id} name={name} />
         </div>
       </div>
       <ClayCard.Body>
         <ul>
-          <ClayCard.Description truncate displayType="text">
+          <ClayCard.Description truncate displayType="text" title="">
             <li>
               <strong>Stars</strong>
               <span> {stars}</span>
