@@ -5,7 +5,7 @@ import AddRepositoryDropdown from "../AddRepositoryDropdown";
 
 export default function RightIconsNavbar() {
   const { getRepositories, isFavorite, setIsFavorite } = useRepositories();
-  const { sortByFavoriteRepository } = useSorts();
+  const { filterByFavoriteRepository } = useSorts();
 
   return (
     <section className="right-menu-icons">
@@ -14,7 +14,7 @@ export default function RightIconsNavbar() {
         onClick={() => {
           setIsFavorite(!isFavorite);
           if (!isFavorite) {
-            sortByFavoriteRepository();
+            filterByFavoriteRepository();
           }
 
           if (isFavorite) {

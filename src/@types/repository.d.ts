@@ -50,7 +50,7 @@ interface SortContext {
   sortByRepositoryOpenIssues: () => void;
   sortByRepositoryAge: () => void;
   sortByRepositoryLastCommit: () => void;
-  sortByFavoriteRepository: () => void;
+  filterByFavoriteRepository: () => void;
 }
 
 interface repositoryCard {

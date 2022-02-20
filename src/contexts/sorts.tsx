@@ -55,13 +55,11 @@ export const SortProvider: React.FC = ({ children }) => {
     );
   }, [repositories, setRepositories]);
 
-  const sortByFavoriteRepository = useCallback(() => {
+  const filterByFavoriteRepository = useCallback(() => {
     const newRepositories = [...repositories];
     setRepositories(
-      newRepositories.sort((a, b) => {
-        if (a.favorite === b.favorite) return 0;
-        if (a.favorite) return -1;
-        return 1;
+      newRepositories.filter((a) => {
+        return a.favorite;
       })
     );
   }, [repositories, setRepositories]);
@@ -74,7 +72,7 @@ export const SortProvider: React.FC = ({ children }) => {
         sortByRepositoryOpenIssues,
         sortByRepositoryAge,
         sortByRepositoryLastCommit,
-        sortByFavoriteRepository,
+        filterByFavoriteRepository,
       }}
     >
       {children}
