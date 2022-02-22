@@ -51,7 +51,7 @@ export const DeleteModal: React.FC<repositoryDeleteModal> = ({ id, name }) => {
         </ClayModal>
       )}
       <button
-        className="btn-unstyled nav-btn nav-btn-monospaced"
+        className="btn-unstyled mr-2 nav-btn nav-btn-monospaced"
         type="button"
         onClick={() => setVisible(true)}
       >

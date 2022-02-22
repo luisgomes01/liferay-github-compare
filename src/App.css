@@ -18,3 +18,7 @@
   cursor: pointer;
   outline: inherit;
 }
+
+.pl61 {
+  padding-left: 61px !important;
+}

@@ -19,11 +19,107 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   avatar,
   favorite,
 }) => {
-  const { repositories, favoriteRepositories } = useRepositories();
+  const { cardView, repositories, favoriteRepositories } = useRepositories();
 
   const addFavoriteOnRepositories = () => {
     localStorage.setItem("repositories", JSON.stringify(repositories));
   };
+
+  if (!cardView) {
+    return (
+      <div className="col-sm-10 col-md-10 col-xl-10 justify-content-center">
+        <ClayCard>
+          <div className="d-flex w-100 justify-content-between">
+            <ClayCard.Description
+              displayType="title"
+              tag="div"
+              title=""
+              truncate
+            >
+              <ClayTooltipProvider>
+                <div
+                  className="line-repository-title"
+                  data-tooltip-align="top"
+                  title={name}
+                >
+                  <img
+                    className="mx-2"
+                    src={avatar}
+                    alt="avatar"
+                    width={45}
+                    height={45}
+                  />
+                  {name}
+                </div>
+              </ClayTooltipProvider>
+            </ClayCard.Description>
+            <ClayCard.Description displayType="subtitle" tag="div" truncate>
+              <div className="d-flex line-card-icons">
+                <button
+                  className="btn-unstyled nav-btn nav-btn-monospaced"
+                  type="button"
+                  onClick={() => {
+                    favoriteRepositories(id);
+                    addFavoriteOnRepositories();
+                  }}
+                >
+                  {favorite ? (
+                    <ClayIcon symbol="star" />
+                  ) : (
+                    <ClayIcon symbol="star-o" />
+                  )}
+                </button>
+                <DeleteModal id={id} name={name} />
+              </div>
+            </ClayCard.Description>
+          </div>
+          <ClayCard.Body>
+            <ClayCard.Description
+              className="pl61"
+              displayType="subtitle"
+              tag="span"
+              truncate={false}
+              title=""
+            >
+              <ul className="d-inline-flex flex-wrap list-repository-info">
+                <li>
+                  <strong>Stars</strong>
+                  <span> {stars}</span>
+                </li>
+
+                <li>
+                  <strong>Forks</strong>
+                  <span> {forks}</span>
+                </li>
+
+                <li>
+                  <strong>Open Issues</strong>
+                  <span> {openIssues}</span>
+                </li>
+                <li>
+                  <strong>Age</strong>
+                  <span> {format(createdAt)}</span>
+                </li>
+                <li>
+                  <strong>Last commit</strong>
+                  <span> {format(pushedAt)}</span>
+                </li>
+                <li>
+                  <strong>License</strong>{" "}
+                  <span>{license ? license : "N/A"}</span>
+                </li>
+              </ul>
+            </ClayCard.Description>
+            <ClayCard.Caption className="pl61">
+              <ClayLabel displayType="warning">
+                {language ? language.toUpperCase() : "No language"}
+              </ClayLabel>
+            </ClayCard.Caption>
+          </ClayCard.Body>
+        </ClayCard>
+      </div>
+    );
+  }
 
   return (
     <ClayCard className="card-container">

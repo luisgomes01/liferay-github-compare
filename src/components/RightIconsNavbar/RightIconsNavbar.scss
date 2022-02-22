@@ -1,0 +1,22 @@
+.right-menu-icons {
+  width: 20rem;
+  display: flex;
+  justify-content: space-evenly;
+
+  .plus-icon-button {
+    background-color: #0b5fff;
+    svg {
+      color: #ffffff;
+    }
+  }
+}
+.view-dropdown {
+  min-width: 0px !important;
+
+  button {
+    color: #6b6c7e !important;
+  }
+  button:hover {
+    color: #000000 !important;
+  }
+}

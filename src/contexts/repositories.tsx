@@ -10,6 +10,7 @@ export const RepositoryProvider: React.FC = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [apiFeedback, setApiFeedback] = useState<any>(undefined);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [cardView, setCardView] = useState(true);
 
   const addRepository = async () => {
     try {
@@ -102,6 +103,8 @@ export const RepositoryProvider: React.FC = ({ children }) => {
         setIsFavorite,
         favoriteRepositories,
         getRepositories,
+        cardView,
+        setCardView,
       }}
     >
       {children}
