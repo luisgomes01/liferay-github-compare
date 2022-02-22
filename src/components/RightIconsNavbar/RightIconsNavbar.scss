@@ -3,13 +3,20 @@
   display: flex;
   justify-content: space-evenly;
 
-  .plus-icon-button {
-    background-color: #0b5fff;
-    svg {
-      color: #ffffff;
+  .dropdown {
+    .plus-icon-button {
+      background-color: #0b5fff;
+      svg {
+        color: #ffffff;
+      }
     }
   }
+
+  .dropdown:hover {
+    color: #6b6c7e;
+  }
 }
+
 .view-dropdown {
   min-width: 0px !important;
 
