@@ -24,7 +24,7 @@ export default function FilterDropdown() {
         className={darkTheme ? "dark-background text-white" : ""}
         trigger={
           <button className="unstyled-button">
-            Fliter and Order{" "}
+            Filter and Order{" "}
             <ClayIcon
               className={darkTheme ? "text-white" : ""}
               symbol="caret-bottom"
