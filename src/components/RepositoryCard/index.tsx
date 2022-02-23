@@ -19,7 +19,8 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   avatar,
   favorite,
 }) => {
-  const { cardView, repositories, favoriteRepositories } = useRepositories();
+  const { cardView, darkTheme, repositories, favoriteRepositories } =
+    useRepositories();
 
   const addFavoriteOnRepositories = () => {
     localStorage.setItem("repositories", JSON.stringify(repositories));
@@ -28,7 +29,7 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   if (!cardView) {
     return (
       <div className="col-sm-10 col-md-10 col-xl-10 justify-content-center">
-        <ClayCard>
+        <ClayCard className={darkTheme ? "dark-card" : ""}>
           <div className="d-flex w-100 justify-content-between">
             <ClayCard.Description
               displayType="title"
@@ -38,7 +39,11 @@ const RepositoryCard: React.FC<repositoryCard> = ({
             >
               <ClayTooltipProvider>
                 <div
-                  className="line-repository-title"
+                  className={
+                    darkTheme
+                      ? "line-repository-title text-white"
+                      : "line-repository-title"
+                  }
                   data-tooltip-align="top"
                   title={name}
                 >
@@ -53,8 +58,19 @@ const RepositoryCard: React.FC<repositoryCard> = ({
                 </div>
               </ClayTooltipProvider>
             </ClayCard.Description>
-            <ClayCard.Description displayType="subtitle" tag="div" truncate>
-              <div className="d-flex line-card-icons">
+            <ClayCard.Description
+              displayType="subtitle"
+              tag="div"
+              title=""
+              truncate
+            >
+              <div
+                className={
+                  darkTheme
+                    ? "dark-line-card-icons d-flex line-card-icons"
+                    : "d-flex line-card-icons"
+                }
+              >
                 <button
                   className="btn-unstyled nav-btn nav-btn-monospaced"
                   type="button"
@@ -81,7 +97,13 @@ const RepositoryCard: React.FC<repositoryCard> = ({
               truncate={false}
               title=""
             >
-              <ul className="d-inline-flex flex-wrap list-repository-info">
+              <ul
+                className={
+                  darkTheme
+                    ? "d-inline-flex flex-wrap list-repository-info text-white"
+                    : "d-inline-flex flex-wrap list-repository-info"
+                }
+              >
                 <li>
                   <strong>Stars</strong>
                   <span> {stars}</span>
@@ -111,7 +133,10 @@ const RepositoryCard: React.FC<repositoryCard> = ({
               </ul>
             </ClayCard.Description>
             <ClayCard.Caption className="pl61">
-              <ClayLabel displayType="warning">
+              <ClayLabel
+                className={darkTheme ? "dark-background" : "bg-white"}
+                displayType="warning"
+              >
                 {language ? language.toUpperCase() : "No language"}
               </ClayLabel>
             </ClayCard.Caption>
@@ -122,8 +147,12 @@ const RepositoryCard: React.FC<repositoryCard> = ({
   }
 
   return (
-    <ClayCard className="card-container">
-      <div className="card-title">
+    <ClayCard
+      className={
+        darkTheme ? "dark-card card-container text-white" : "card-container"
+      }
+    >
+      <div className={darkTheme ? "card-title text-white" : "card-title"}>
         <ClayTooltipProvider>
           <div
             className="repository-title"
@@ -140,7 +169,9 @@ const RepositoryCard: React.FC<repositoryCard> = ({
             {name}
           </div>
         </ClayTooltipProvider>
-        <div className="card-icons">
+        <div
+          className={darkTheme ? "dark-card-icons card-icons" : "card-icons"}
+        >
           <button
             className="btn-unstyled nav-btn nav-btn-monospaced"
             type="button"
@@ -188,7 +219,11 @@ const RepositoryCard: React.FC<repositoryCard> = ({
             </li>
 
             <li>
-              <ClayLabel displayType="warning" large>
+              <ClayLabel
+                className={darkTheme ? "dark-background" : "bg-white"}
+                displayType="warning"
+                large
+              >
                 {language ? language.toUpperCase() : "No language"}
               </ClayLabel>
             </li>

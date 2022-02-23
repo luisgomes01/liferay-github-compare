@@ -5,7 +5,7 @@ import ClayIcon from "@clayui/icon";
 import { useRepositories } from "../../contexts/repositories";
 
 export const DeleteModal: React.FC<repositoryDeleteModal> = ({ id, name }) => {
-  const { deleteRepository } = useRepositories();
+  const { darkTheme, deleteRepository } = useRepositories();
   const [visible, setVisible] = useState(false);
   const { observer, onClose } = useModal({
     onClose: () => setVisible(false),
@@ -20,14 +20,21 @@ export const DeleteModal: React.FC<repositoryDeleteModal> = ({ id, name }) => {
           status="warning"
           disableAutoClose={true}
         >
-          <ClayModal.Header>Delete Repository</ClayModal.Header>
-          <ClayModal.Body>
+          <ClayModal.Header
+            className={darkTheme ? "dark-background text-warning" : ""}
+          >
+            Delete Repository
+          </ClayModal.Header>
+          <ClayModal.Body
+            className={darkTheme ? "dark-background text-white" : ""}
+          >
             <p>
               Are you sure to delete the <strong>{name}</strong> repository?
             </p>
           </ClayModal.Body>
 
           <ClayModal.Footer
+            className={darkTheme ? "dark-background" : ""}
             last={
               <ClayButton.Group spaced>
                 <ClayButton

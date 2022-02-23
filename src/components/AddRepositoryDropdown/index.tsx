@@ -13,6 +13,7 @@ export default function AddRepositoryDropdown() {
   const {
     addRepository,
     addAllUserRepositories,
+    darkTheme,
     urlEnding,
     setUrlEnding,
     apiFeedback,
@@ -43,21 +44,25 @@ export default function AddRepositoryDropdown() {
         </button>
       }
       menuElementAttrs={{
-        className: "add-repository-dropdown",
-        containerProps: {
-          className: "dropdown-menu-react-portal-div",
-          id: "dropdownMenuReactPortalDiv",
-        },
+        className: darkTheme
+          ? "dark-add-repository-dropdown add-repository-dropdown"
+          : "add-repository-dropdown",
       }}
       menuWidth={"sm"}
     >
       <form onSubmit={onSubmitForm}>
         <ClayCard>
-          <ClayCard.Body>
-            <ClayCard.Description displayType="title">
+          <ClayCard.Body className={darkTheme ? "dark-card-body" : ""}>
+            <ClayCard.Description
+              className={darkTheme ? "text-white" : ""}
+              displayType="title"
+            >
               New Repository
             </ClayCard.Description>
-            <label htmlFor="repository">
+            <label
+              className={darkTheme ? "text-white" : ""}
+              htmlFor="repository"
+            >
               Repository <span>*</span>
             </label>
             <ClayInput.Group>

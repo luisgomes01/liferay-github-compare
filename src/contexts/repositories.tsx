@@ -11,6 +11,7 @@ export const RepositoryProvider: React.FC = ({ children }) => {
   const [apiFeedback, setApiFeedback] = useState<any>(undefined);
   const [isFavorite, setIsFavorite] = useState(false);
   const [cardView, setCardView] = useState(true);
+  const [darkTheme, setDarkTheme] = useState(false);
 
   const addRepository = async () => {
     try {
@@ -105,6 +106,8 @@ export const RepositoryProvider: React.FC = ({ children }) => {
         getRepositories,
         cardView,
         setCardView,
+        darkTheme,
+        setDarkTheme,
       }}
     >
       {children}

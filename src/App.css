@@ -22,3 +22,11 @@
 .pl61 {
   padding-left: 61px !important;
 }
+
+.container-fluid-max-xl {
+  min-width: 200px !important;
+}
+
+.dark-card {
+  background-color: #272727 !important;
+}

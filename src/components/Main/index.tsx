@@ -5,11 +5,11 @@ import { useRepositories } from "../../contexts/repositories";
 import RepositoryCard from "../RepositoryCard";
 
 export default function Main() {
-  const { cardView, repositories, searchTerm } = useRepositories();
+  const { cardView, darkTheme, repositories, searchTerm } = useRepositories();
 
   if (repositories.length === 0) {
     return (
-      <main>
+      <main className={darkTheme ? "main-dark-background" : ""}>
         <div className="emptystate-container">
           <EmptyState />
         </div>
@@ -19,7 +19,13 @@ export default function Main() {
 
   if (!cardView) {
     return (
-      <main className="container-fluid pt-3">
+      <main
+        className={
+          darkTheme
+            ? "main-dark-background container-fluid pt-3"
+            : "container-fluid pt-3"
+        }
+      >
         <div className="col">
           {repositories
             .filter((repository) => {
@@ -61,7 +67,11 @@ export default function Main() {
   }
 
   return (
-    <main className="container-fluid">
+    <main
+      className={
+        darkTheme ? "main-dark-background container-fluid" : "container-fluid"
+      }
+    >
       <div className="row">
         {repositories
           .filter((repository) => {

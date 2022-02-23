@@ -24,6 +24,9 @@ nav {
 
     .search-bar {
       min-width: 30%;
+      .minh-40 {
+        min-height: 40px;
+      }
       .input-group-text {
         background-color: #f1f2f5;
       }
@@ -32,9 +35,12 @@ nav {
   svg {
     color: #6b6c7e;
   }
+  .right-menu-icons {
+    align-items: center;
+  }
+
   .right-menu-icons :hover {
     background: rgba(39, 40, 51, 0.04);
-    border-radius: 4px;
   }
 }
 
